@@ -219,6 +219,21 @@
             jQuery(nameAbMaxRate).val(settingsJson.abSettings.maxRate);
         }
 
+        if(settingsJson.abSettings.eachFilterSearch) {
+            window.eachFilterSearch = settingsJson.abSettings.eachFilterSearch;
+            jQuery(nameAbNumberFilterSearch).val(settingsJson.abSettings.eachFilterSearch)
+        }else{
+            window.eachFilterSearch = null;
+            jQuery(nameAbNumberFilterSearch).val('')
+        }
+
+
+        if (settingsJson.abSettings.errorCodes) {
+            jQuery(nameAbStopErrorCode).val(settingsJson.abSettings.errorCodes);
+        }else{
+            jQuery(nameAbStopErrorCode).val('');
+        }
+
         if (settingsJson.abSettings.randMinBid) {
             jQuery(nameAbRandMinBidInput).val(settingsJson.abSettings.randMinBid);
         }
@@ -1272,6 +1287,14 @@
 
             if(window.addFilterGK){
                 settingsJson.abSettings.addFilterGK = window.addFilterGK;
+            }
+
+            if (jQuery(nameAbNumberFilterSearch).val() !== '') {
+                settingsJson.abSettings.eachFilterSearch = parseInt(jQuery(nameAbNumberFilterSearch).val());
+            }
+
+            if (jQuery(nameAbStopErrorCode).val()) {
+                settingsJson.abSettings.errorCodes = jQuery(nameAbStopErrorCode).val();
             }
 
             if (jQuery(nameTelegramBotToken).val() !== '') {
