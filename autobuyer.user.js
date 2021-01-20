@@ -219,17 +219,17 @@
             jQuery(nameAbMaxRate).val(settingsJson.abSettings.maxRate);
         }
 
-        if(settingsJson.abSettings.eachFilterSearch) {
-            window.eachFilterSearch = settingsJson.abSettings.eachFilterSearch;
-            jQuery(nameAbNumberFilterSearch).val(settingsJson.abSettings.eachFilterSearch)
+        if(settingsJson.abGeneralSettings.eachFilterSearch) {
+            window.eachFilterSearch = settingsJson.abGeneralSettings.eachFilterSearch;
+            jQuery(nameAbNumberFilterSearch).val(settingsJson.abGeneralSettings.eachFilterSearch)
         }else{
             window.eachFilterSearch = null;
             jQuery(nameAbNumberFilterSearch).val('')
         }
 
 
-        if (settingsJson.abSettings.errorCodes) {
-            jQuery(nameAbStopErrorCode).val(settingsJson.abSettings.errorCodes);
+        if (settingsJson.abGeneralSettings.errorCodes) {
+            jQuery(nameAbStopErrorCode).val(settingsJson.abGeneralSettings.errorCodes);
         }else{
             jQuery(nameAbStopErrorCode).val('');
         }
@@ -1204,6 +1204,8 @@
             settingsJson.searchCriteria = { criteria: _searchViewModel.searchCriteria, playerData: _searchViewModel.playerData };
 
             settingsJson.abSettings = {};
+            settingsJson.abGeneralSettings = {};
+
 
             if (jQuery(nameAbBuyPrice).val() !== '') {
                 settingsJson.abSettings.buyPrice = jQuery(nameAbBuyPrice).val();
@@ -1290,11 +1292,11 @@
             }
 
             if (jQuery(nameAbNumberFilterSearch).val() !== '') {
-                settingsJson.abSettings.eachFilterSearch = parseInt(jQuery(nameAbNumberFilterSearch).val());
+                settingsJson.abGeneralSettings.eachFilterSearch = parseInt(jQuery(nameAbNumberFilterSearch).val());
             }
 
             if (jQuery(nameAbStopErrorCode).val()) {
-                settingsJson.abSettings.errorCodes = jQuery(nameAbStopErrorCode).val();
+                settingsJson.abGeneralSettings.errorCodes = jQuery(nameAbStopErrorCode).val();
             }
 
             if (jQuery(nameTelegramBotToken).val() !== '') {
